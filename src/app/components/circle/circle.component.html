@@ -1,0 +1,21 @@
+<div class="clock-circle"
+  [ngClass]="{
+    'clock-circle_hour': data.type === 'hour',
+    'clock-circle_minute': data.type === 'minute',
+    'clock-circle_second': data.type === 'second'
+  }">
+  <div class="clock-circle__item"
+    *ngFor="let item of data.items"
+    [ngClass]="{
+      'clock-circle__item_number': item.type === 'number',
+      'clock-circle__item_dash': item.type === 'dash'
+    }"
+    [ngStyle]="{
+      'transform': 'rotate(' + item.angle + 'deg)'
+    }">
+    <span class="clock-circle__count"
+      *ngIf="item.value">
+      {{item.value}}
+    </span>
+  </div>
+</div>

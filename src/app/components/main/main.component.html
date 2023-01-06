@@ -1,0 +1,58 @@
+<div class="clock-face">
+  <div class="clock-arrow">
+    <clock-arrow class="clock-arrow-second"
+      #arrowSecond
+      [data$]="timer.second$"
+      [degrees]="6"
+      (onTick)="changeSecond()"
+      (onTurn)="changeMinute()"
+    >
+      <div class="clock-arrow-second__center-block">
+        <div class="clock-gear"></div>
+      </div>
+      <div class="clock-arrow-second__pointer"></div>
+    </clock-arrow>
+    <clock-arrow class="clock-arrow-minute"
+      [data$]="minute$"
+      [degrees]="6"
+      (onTurn)="changeHour()">
+      <div class="clock-arrow-minute__pointer"></div>
+      <div class="clock-arrow-minute__detail"
+        #chain
+        *ngFor="let degree of listMinuteDetail"
+        [ngStyle]="{
+          'transform': 'rotate(' + degree + 'deg)'
+        }">
+        <svg class="chain" viewBox="0 0 208 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle r="20" transform="matrix(-1 0 0 1 104 25)" fill="#00010D" stroke="#AA5E00" stroke-width="10"/>
+          <path d="M0 4.99951C11.172 4.99951 20.52 14.5633 42.5 13.4999C73.5 12 80 4.99951 104 4.99951" stroke="#AA5E00" stroke-width="10"/>
+          <path d="M0 50C68.5 50 79.5 5 104 5" stroke="#AA5E00" stroke-width="10"/>
+          <path d="M208 5C196.828 5 187.479 14.5638 165.5 13.5004C134.5 12.0005 128 5 104 5" stroke="#AA5E00" stroke-width="10"/>
+          <path d="M208 50.0005C139.5 50.0005 128.5 5.00049 104 5.00049" stroke="#AA5E00" stroke-width="10"/>
+        </svg>
+      </div>
+    </clock-arrow>
+    <clock-arrow class="clock-arrow-hour"
+      [data$]="hour$"
+      [degrees]="30">
+      <div class="clock-arrow-hour__pointer"></div>
+    </clock-arrow>
+  </div>
+
+  <clock-circle
+    *ngFor="let circle of dataClock"
+    [data]="circle"
+  ></clock-circle>
+
+  <div class="clock-gear-hour"
+    #gearHour>
+    <div class="clock-gear-hour__item"></div>
+    <div class="clock-gear-hour__item"></div>
+    <div class="clock-gear-hour__item"></div>
+    <div class="clock-gear-hour__item"></div>
+  </div>
+</div>
+<div class="clock-cap"
+  #clockCap>
+  Welcome
+</div>

@@ -1,0 +1,135 @@
+@import '../../../assets/styles/variables.less';
+@import '../../../assets/styles/fonts.less';
+
+.clock {
+  &-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    &_hour {
+      width: 70%;
+      height: 70%;
+      &:before {
+        content: '';
+        position: inherit;
+        top: inherit;
+        left: inherit;
+        transform: inherit;
+        display: block;
+        width: calc(100% - 170px);
+        height: calc(100% - 170px);
+        border-radius: inherit;
+      }
+      .clock-circle {
+        &__item {
+          // border: 10px solid @Scream-2-hex;
+          &_number {
+            color: #b99c00;
+            font-size: 90px;
+            text-align: center;
+            line-height: 1;
+            font-family: 'Datcub', sans-serif;
+          }
+          &_dash {
+            // background: @Scream-2-hex;
+            &:before {
+              content: '';
+              position: absolute;
+              display: block;
+              left: 50%;
+              top: 40px;
+              transform: translateX(-50%);
+              background: #b99c00;
+              width: 15px;
+              height: 30px;
+            }
+          }
+          &:nth-child(4) {
+            .clock-circle__count {
+              transform: rotate(-90deg);
+            }
+          }
+          &:nth-child(7) {
+            .clock-circle__count {
+              transform: rotate(180deg);
+            }
+          }
+          &:nth-child(10) {
+            .clock-circle__count {
+              transform: rotate(90deg);
+            }
+          }
+        }
+      }
+    }
+    &_minute {
+      width: 100%;
+      height: 100%;
+      border: 10px solid @Scream-2-hex;
+      .clock-circle {
+        &__item {
+          &_number {
+            font-size: 40px;
+            line-height: 1;
+            color: #b1b1b1;
+            text-align: center;
+            font-family: 'Datcub', sans-serif;
+          }
+          &_dash {
+            &:before {
+              background: #909090;
+              width: 5px;
+              height: 15px;
+              top: 18px;
+            }
+          }
+          &:nth-child(n+21) {
+            .clock-circle__count {
+              transform: rotate(-180deg);
+            }
+          }
+          &:nth-child(n+51) {
+            .clock-circle__count {
+              transform: rotate(0deg);
+            }
+          }
+        }
+      }
+    }
+    &_second {
+      width: 80%;
+      height: 80%;
+      transform: translate(-50%, -50%) rotate(3deg);
+      .clock-circle {
+        &__item {
+          &:before {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,1,13,1) 25%, rgba(144,144,144,1) 50%, rgba(144,144,144,1) 100%);
+          }
+        }
+      }
+    }
+    &__item {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      &_dash {
+        &:before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+    &__count {
+      display: inline-block;
+    }
+  }
+}
